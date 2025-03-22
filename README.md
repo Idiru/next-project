@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🧠 Pokémon List — Redux Toolkit + Next.js + TypeScript
 
-## Getting Started
+### ⚙️ Tech Stack
 
-First, run the development server:
+- Next.js (App Router)
+- Redux Toolkit
+- React Redux
+- TypeScript
+- Tailwind CSS (optional)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Feature Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Displays a list of the first 151 Pokémon using data fetched from the PokéAPI, with global state management via Redux Toolkit and full TypeScript support.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧩 Implementation Summary
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Redux Slice
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- A dedicated slice was created for managing the Pokémon list.
+- Uses `createAsyncThunk` to handle the asynchronous API call.
+- Manages loading, success, and error states.
+- The data is typed using TypeScript interfaces.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. TypeScript Integration
 
-## Deploy on Vercel
+- Defined types for `PokemonSummary` and API response structure.
+- The slice state is typed (`PokemonState`) for better reliability.
+- `RootState` and `AppDispatch` are exported to ensure typed Redux hooks.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Store Configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- All reducers are registered in the central `store.ts` file.
+- Store types are exported to be used throughout the app.
+
+### 4. Redux Provider
+
+- A custom `ReduxProvider` wraps the application.
+- Integrated into `layout.tsx` to make the store available globally.
+
+### 5. Custom Hooks
+
+- `useAppDispatch` and `useAppSelector` were created for type-safe usage of Redux in components.
+
+### 6. Component Usage
+
+- `fetchPokemonList` is dispatched in a `useEffect` to trigger the API call on mount.
+- Loading and error states are handled in the UI.
+- Pokémon are displayed as a bullet-point list using Tailwind CSS (`list-disc`, `pl-6`).
