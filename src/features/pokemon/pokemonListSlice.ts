@@ -1,4 +1,3 @@
-// src/features/user/userSlice.ts
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { PokemonSummary, PokemonState, FetchPokemonResponse } from '../../types/pokemon'
 
@@ -6,7 +5,7 @@ import { PokemonSummary, PokemonState, FetchPokemonResponse } from '../../types/
 export const fetchPokemonList = createAsyncThunk<PokemonSummary[]>(
     "pokemonList/fetchPokemonList",
     async () => {
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=50")
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10")
         const data : FetchPokemonResponse = await res.json()
         return data.results
     }

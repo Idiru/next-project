@@ -1,6 +1,5 @@
 export type PokemonSummary = {
   name: string;
-  url: string;
 };
 
 export type PokemonState = {
@@ -10,8 +9,14 @@ export type PokemonState = {
 };
 
 export type FetchPokemonResponse = {
-    count: number
-    next: string | null
-    previous: string | null
-    results: PokemonSummary[]
-  }
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: PokemonSummary[];
+};
+
+export type PokemonPageParams = {
+  params: {
+    name: string;
+  };
+};
