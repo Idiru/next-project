@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { PokemonPageParams } from "@/types/pokemon"
 
 
 //Cause of some issue to get the parameter inside the url with Next (params soon depreciated and use "use" 
@@ -7,7 +6,7 @@ import { PokemonPageParams } from "@/types/pokemon"
 // I chose to keep it simple without useEffect or useState cause this page is not dynamic 
 // after the first render so no need to complexify it)
 
-export default async function PokemonDetailPage({ params }: PokemonPageParams) {
+export default async function PokemonDetailPage({ params }: any) {
 
     const { name } = params // Destructuring to avoid repeating "params."
 
@@ -27,7 +26,6 @@ export default async function PokemonDetailPage({ params }: PokemonPageParams) {
                 width={150}
                 height={150}
                 className="object-contain"
-                priority
             />
             <h1>{name}</h1>
 

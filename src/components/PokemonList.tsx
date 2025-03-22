@@ -33,7 +33,7 @@ export default function PokemonList() {
                 <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 list-none p-0">{
                     pokemonList.map((pokemon: PokemonSummary) => ( 
                         //Dedicated Pokemon block create, we map it to repeat it with the different pokemons
-                        // We also give to the dedicated component the name of the pokemon, we use it as parameter in the detail page in case of a click 
+                        // We also give to the dedicated component the name of the pokemon, we use it as parameter in the detail page in case of a click on it
                         <li className="text-center" key={pokemon.name}> 
                             <PokemonBlock name={pokemon.name} />
                         </li>

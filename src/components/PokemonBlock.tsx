@@ -7,7 +7,7 @@ export default function PokemonBlock({ name }: PokemonSummary) {
 
     return (
         <div>
-            <Link href={`/pokemon/${name}`} >
+            <Link href={`/pokemon/detail/${name}`} >
                 <Image
                     src="/pikachu.png"
                     alt={name}

@@ -15,8 +15,9 @@ export type FetchPokemonResponse = {
   results: PokemonSummary[];
 };
 
-export type PokemonPageParams = {
-  params: {
-    name: string;
-  };
-};
+
+export type Props = {
+  searchParams: {
+    name?: string
+  }
+}
