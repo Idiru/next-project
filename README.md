@@ -12,7 +12,7 @@
 
 ## 🚀 Feature Overview
 
-Displays a list of the first 151 Pokémon using data fetched from the PokéAPI, with global state management via Redux Toolkit and full TypeScript support.
+Displays a list of the first 50 Pokémon using data fetched from the PokéAPI, with global state management via Redux Toolkit and full TypeScript support.
 
 ---
 
