@@ -1,0 +1,11 @@
+{
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"javascript.format.enable": false,
+	"typescript.format.enable": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"javascript.semicolons": "remove",
+	"typescript.semicolons": "remove"
+}

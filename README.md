@@ -73,12 +73,13 @@ Displays a list of the first 10 Pokémon using data fetched from the PokéAPI, w
 - `useAppDispatch` and `useAppSelector` were created for type-safe Redux usage.
 
 ### Pages
+
 - The `Home` which is displaying the list of Pokemons
 - The `PokemonDetailPage` which is displaying the detail of Pokemon after clicking on a `PokemonBlock`, the content of this page dynamically generated thanks an API done with the parameter `name` inside the url
 
 ### Component Usage
 
 - The `fetchPokemonList` action is dispatched in a `useEffect` on mount.
-- The `PokemonList` to get the list of Pokemons 
+- The `PokemonList` to get the list of Pokemons
 - The `PokemonBlock` mapped inside the `PokemonList` to display each Pokemon, to click on it redirect to the related Pokemon detail page
 - Loading and error states are displayed in the UI.
