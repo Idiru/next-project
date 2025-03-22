@@ -24,6 +24,7 @@ export default async function PokemonDetailPage({ params }: { params: { name: st
                 width={150}
                 height={150}
                 className="object-contain"
+                priority
             />
             <h1>{name}</h1>
 
