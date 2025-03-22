@@ -1,12 +1,12 @@
 import Image from 'next/image'
-
+import { PokemonPageParams } from "@/types/pokemon"
 
 //Cause of some issue to get the parameter inside the url with Next (params soon depreciated and use "use" 
 // needed to divided the code into 2 parts - SSR and CSR) 
 // I chose to keep it simple without useEffect or useState cause this page is not dynamic 
 // after the first render so no need to complexify it)
 
-export default async function PokemonDetailPage({ params }: any) {
+export default async function PokemonDetailPage({ params }: PokemonPageParams) {
 
     const { name } = params // Destructuring to avoid repeating "params."
 
