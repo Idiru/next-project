@@ -13,6 +13,8 @@ export default async function PokemonDetailPage({ params }: { params: { name: st
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`)
     const pokemonData = await res.json()
 
+    console.log(pokemonData)
+
     return (
         <div className="container-pokemon flex flex-col items-center justify-center min-h-screen text-center">
             <div className=''>
