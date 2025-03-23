@@ -1,3 +1,5 @@
+import PokemonItems from "@/components/PokemonItems";
+import PokemonItemsDetails from "@/components/PokemonItemDetails";
 import Image from "next/image";
 
 //Cause of some issue to get the parameter inside the url with Next (params soon depreciated and use "use"
@@ -6,31 +8,37 @@ import Image from "next/image";
 // after the first render so no need to complexify it)
 
 type Props = {
-	params: Promise<{ name: string }>;
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+    params: Promise<{ name: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export default async function PokemonDetailPage(
-	props: Props
+    props: Props
 ): Promise<React.ReactElement> {
-	const params = await props.params;
-	const { name } = params;
-	const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-	const pokemonData = await res.json();
+    const params = await props.params;
+    const { name } = params;
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const pokemonData = await res.json();
 
-	console.log(pokemonData);
+    console.log(pokemonData)
 
-	return (
-		<div className="container-pokemon flex flex-col items-center justify-center min-h-screen text-center">
-			<div className=""></div>
-			<Image
-				src="/pikachu.png"
-				alt={name}
-				width={150}
-				height={150}
-				className="object-contain"
-			/>
-			<h1>{name}</h1>
-		</div>
-	);
+
+    return (
+        <div className="container-pokemon flex items-center gap-10 justify-center min-h-screen text-center">
+                <div className="container-pokemon-items">
+                    <PokemonItems />
+                </div>
+                <div className="container-pokemon-content">
+                    <Image
+                        src="/pikachu.png"
+                        alt={name}
+                        width={150}
+                        height={150}
+                        className="object-contain"
+                    />
+                    <h1>{name}</h1>
+                </div>
+                <PokemonItemsDetails itemsData={pokemonData} />
+        </div>
+    );
 }
