@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Pokémon List — Redux Toolkit + Next.js + TypeScript
 
-## Getting Started
+## ▶️ Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Idiru/next-project
+cd next-project
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. Open the app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js
+- Redux Toolkit
+- React Redux
+- TypeScript
+- Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Feature Overview
 
-## Deploy on Vercel
+Displays a list of the first 10 Pokémon using data fetched from the PokéAPI, with global state management via Redux Toolkit and full TypeScript support.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧩 Implementation Summary
+
+### Redux Slice
+
+- A dedicated slice was created to manage the Pokémon list.
+- `createAsyncThunk` handles the asynchronous API call.
+- The slice manages loading, success, and error states.
+- Data is typed with TypeScript.
+
+### Store Configuration
+
+- All reducers are registered in the central `store.ts` file.
+- Store types are exported for reuse throughout the app.
+
+### Redux Provider
+
+- A custom `ReduxProvider` wraps the application.
+- Integrated into `layout.tsx` so the Redux store is available globally.
+
+### Custom Hooks
+
+- `useAppDispatch` and `useAppSelector` were created for type-safe Redux usage.
+
+### Pages
+- The `Home` which is displaying the list of Pokemons
+- The `PokemonDetailPage` which is displaying the detail of Pokemon after clicking on a `PokemonBlock`, the content of this page dynamically generated thanks an API done with the parameter `name` inside the url
+
+### Component Usage
+
+- The `fetchPokemonList` action is dispatched in a `useEffect` on mount.
+- The `PokemonList` to get the list of Pokemons 
+- The `PokemonBlock` mapped inside the `PokemonList` to display each Pokemon, to click on it redirect to the related Pokemon detail page
+- The `PokemonItems` to display inside the `PokemonDetailPage` at left the list of the characteristic for of pokemon
+- The `PokemonItemDetails` to display inside`PokemonDetailPage` at right the details of the selected characteristic
+- The `PokemonClickCount` to display the count based on the click on the related pokemon inside the`PokemonList`
+
+### Context
+I created a context just to practice. 
+- `ItemsContext` to setup the context 
+- `ItemContextProvider` to provide the context, this component is wrapped inside the `layout`page
