@@ -1,16 +1,15 @@
-'use client';
+'use client'
 
 import { useState } from "react";
 import ItemsContext from "./ItemsContext";
 
-function ItemsProvider({ children }: { children: React.ReactNode }) {
-  const [itemSelected, setItemSelected] = useState("");
+export const ItemsProvider = ({ children }: { children: React.ReactNode }) => {
+  const [itemSelected, setItemSelected] = useState('');
+  const [clicksCount, setClicksCount] = useState<Record<string, number>>({});
 
   return (
-    <ItemsContext.Provider value={{ itemSelected, setItemSelected }}>
+    <ItemsContext.Provider value={{ itemSelected, setItemSelected, clicksCount, setClicksCount }}>
       {children}
     </ItemsContext.Provider>
   );
-}
-
-export default ItemsProvider;
+};

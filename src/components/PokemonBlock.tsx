@@ -1,15 +1,18 @@
+/* eslint-disable */
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { PokemonSummary } from '@/types/pokemon'
+import { EnrichedPokemonSummary } from '@/types/pokemon'
 
-export default function PokemonBlock({ name }: PokemonSummary) {
+//Dedicated component for the Pokemon block, we get the data thanks to props drilling
+export default function PokemonBlock({ name, sprite }: EnrichedPokemonSummary) {
 
     return (
         <div>
             <Link href={`/pokemon/${name}`} >
                 <Image
-                    src="/pikachu.png"
+                    src={sprite}
                     alt={name}
                     width={150}
                     height={150}

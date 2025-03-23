@@ -1,6 +1,7 @@
 import PokemonItems from "@/components/PokemonItems";
 import PokemonItemsDetails from "@/components/PokemonItemDetails";
 import Image from "next/image";
+import PokemonClickCount from "@/components/PokemonClickCount"
 
 //Cause of some issue to get the parameter inside the url with Next (params soon depreciated and use "use"
 // needed to divided the code into 2 parts - SSR and CSR)
@@ -30,13 +31,14 @@ export default async function PokemonDetailPage(
                 </div>
                 <div className="container-pokemon-content">
                     <Image
-                        src="/pikachu.png"
+                        src={pokemonData.sprites.front_default}
                         alt={name}
                         width={150}
                         height={150}
                         className="object-contain"
                     />
                     <h1>{name}</h1>
+                    <PokemonClickCount name={name}/>
                 </div>
                 <PokemonItemsDetails itemsData={pokemonData} />
         </div>

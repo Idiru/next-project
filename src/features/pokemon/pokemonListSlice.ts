@@ -1,15 +1,39 @@
+/* eslint-disable */
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { PokemonSummary, PokemonState, FetchPokemonResponse } from '../../types/pokemon'
+import { PokemonState, FetchPokemonListResponse, EnrichedPokemonSummary } from '../../types/pokemon'
 
 
-export const fetchPokemonList = createAsyncThunk<PokemonSummary[]>(
+export const fetchPokemonList = createAsyncThunk<EnrichedPokemonSummary[]>(
     "pokemonList/fetchPokemonList",
     async () => {
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10")
-        const data : FetchPokemonResponse = await res.json()
-        return data.results
+      const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10");
+      const data: FetchPokemonListResponse = await res.json();
+  
+      // enrichir chaque Pokémon avec son sprite
+      const enrichedResults = await Promise.all(
+        data.results.map(async (pokemon) => {
+          try {
+            const res = await fetch(pokemon.url);
+            const fullData = await res.json();
+            return {
+              name: pokemon.name,
+              url: pokemon.url,
+              sprite: fullData.sprites.front_default ?? null,
+            };
+          } catch (e: any) {
+            return {
+              name: pokemon.name,
+              url: pokemon.url,
+              sprite: null,
+            };
+          }
+        })
+      );
+  
+      return enrichedResults;
     }
-)
+  );
 
 const initialState: PokemonState = {
     pokemonList: [],
@@ -30,6 +54,7 @@ const pokemonListSlice = createSlice({
         .addCase(fetchPokemonList.fulfilled, (state, action) => {
             state.loading = false
             state.pokemonList = action.payload
+            
         })
         .addCase(fetchPokemonList.rejected, (state, action) => {
             state.loading = false

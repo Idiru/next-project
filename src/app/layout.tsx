@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "@/providers/ReduxProvider";
-import ItemsProvider from "../contexts/ItemContextProvider";
+import {ItemsProvider} from "@/contexts/ItemContextProvider";
 
 
 const geistSans = Geist({

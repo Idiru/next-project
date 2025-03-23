@@ -52,12 +52,6 @@ Displays a list of the first 10 Pokémon using data fetched from the PokéAPI, w
 - The slice manages loading, success, and error states.
 - Data is typed with TypeScript.
 
-### TypeScript Integration
-
-- Defined types for `PokemonSummary` and the API response.
-- The slice state is typed using a `PokemonState` interface.
-- `RootState` and `AppDispatch` are exported to ensure fully typed Redux usage.
-
 ### Store Configuration
 
 - All reducers are registered in the central `store.ts` file.
@@ -81,4 +75,11 @@ Displays a list of the first 10 Pokémon using data fetched from the PokéAPI, w
 - The `fetchPokemonList` action is dispatched in a `useEffect` on mount.
 - The `PokemonList` to get the list of Pokemons 
 - The `PokemonBlock` mapped inside the `PokemonList` to display each Pokemon, to click on it redirect to the related Pokemon detail page
-- Loading and error states are displayed in the UI.
+- The `PokemonItems` to display inside the `PokemonDetailPage` at left the list of the characteristic for of pokemon
+- The `PokemonItemDetails` to display inside`PokemonDetailPage` at right the details of the selected characteristic
+- The `PokemonClickCount` to display the count based on the click on the related pokemon inside the`PokemonList`
+
+### Context
+I created a context just to practice. 
+- `ItemsContext` to setup the context 
+- `ItemContextProvider` to provide the context, this component is wrapped inside the `layout`page
